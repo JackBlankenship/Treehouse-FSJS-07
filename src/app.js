@@ -90,6 +90,26 @@ app.get('/tweet/:data', function (req, res ) {
 	twit.postTwitData(statusesUpdate, user, modifiedTweet);		// call the twitter post function
 	res.status(200).send({"status": "true"});					// return good status at this time. 
 });
+//*************************************
+// This next app.get must come last
+// DO NOT have a next() in the above app.get
+//*************************************
+app.get('/*', function (req, res, next ) {
+	var err = new Error();
+	err.status = 404;
+	next(err);
+	//res.redirect('/'); // this just redirects to main route.
+});
+
+app.use(function(err, req, res, next) {
+	if(err.status !== 404) {
+		return next();
+	}
+ 	let thisMessage = err.message || '** page not found **';
+
+	res.status(404);
+	res.render(__dirname + '/templates/error.pug', {thisMessage: thisMessage});
+});
 
 app.listen(3000, function(){
 	console.log("Twitter Express frontend server started on port 3000");

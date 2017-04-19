@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+	include ./partials/_head.pug
+	body
+		.circle--header
+			.bounds
+				.circle--fluid
+					.circle--fluid--cell
+						a.button.button-primary(href='/') home					
+					.circle--fluid--cell.align-right
+						h1= thisMessage
+		a(href='/')
+			.bounds.app--body(style='background: no-repeat center url(/static/images/starwars404.jpg)')
+			
