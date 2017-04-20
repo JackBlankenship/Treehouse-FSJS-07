@@ -4,8 +4,8 @@ block content
 			form
 				.circle--fluid
 					.circle--fluid--cell.circle--fluid--primary.align-bottom.app--tweet--post
-						.app--avatar(style='background-image: url(/static/images/m-spore.png)')
-							img(src='/static/images/m-spore.png')
+						.app--avatar(style='background-image: url(' + timeline[0].user.profile_image_url + ')')
+							img(src= timeline[0].user.profile_image_url)
 						textarea#tweet-textarea.circle--textarea--input(placeholder="What's happening?")
 
 						#tweet-char.app--tweet--char 
